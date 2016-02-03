@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
  
-import edu.asu.diging.tutorial.spring.service.MoodService;
+
 import edu.asu.diging.tutorial.spring.service.MoodServiceInterface;
  
 @Controller
@@ -20,14 +20,17 @@ public class HomeController {
     public void init(){
 		service.List();
 	}
+    
     @RequestMapping(value = "/explanation")
-	public String reason(ModelMap map){
+	public String explanation(ModelMap map){
 		map.addAttribute("mood", service.getCurrentMood());
-		return "explanation";}
+		return "explanation";
+	}
+   
     @RequestMapping(value = "/")
     public String home(ModelMap map) {
         map.addAttribute("mood", service.getCurrentMood());
-        return "index";
+        return "home";
         
     }
 }
